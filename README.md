@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# Human-Like Query to SQL Translator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a Node.js application that provides an API to convert human-like queries into SQL queries using OpenAI's GPT-4 model. The application connects to a MySQL database, retrieves the schema, and sends it to the OpenAI API along with the user's query. The resulting SQL query is returned to the user. A simple React front-end is included to interact with the API.
 
-## Available Scripts
+## Configuration
 
-In the project directory, you can run:
+1. Clone this repository:
+````
+git clone https://github.com/your-github-username/human-like-query-to-sql-translator.git
+cd human-like-query-to-sql-translator
+````
+2. Install dependencies:
+````
+npm install
+````
+3. Create a `.env` file in the src directory and add the following:
+````
+OPENAI_API_KEY=your_openai_api_key
+DB_HOST=your_db_host
+DB_USER=your_db_user
+DB_PASSWORD=your_db_password
+DB_DATABASE=your_db_database
+DB_PORT=your_db_port
+DB_TABLES=table1,table2,table3
+````
+Replace the placeholders with your actual OpenAI API key and database credentials.
+## How it works
 
-### `npm start`
+1. Start the server in one terminal:
+````
+cd src
+node server.js
+````
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+2. Start the React front-end in another terminal:
+````
+npm start
+````
+3. Open http://localhost:3000 in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+The server will return an SQL query based on the provided human-like query.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Greetings and Author Info
 
-### `npm run build`
+This project was created with care by Andy Cufari. If you have any questions or feedback, feel free to reach out at andycufari@gmail.com.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Happy coding!

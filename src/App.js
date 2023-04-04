@@ -1,23 +1,42 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
 function App() {
+  const [humanQuery, setHumanQuery] = useState('');
+  const [sqlQuery, setSqlQuery] = useState('');
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const response = await fetch('/api/generate-sql', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ humanQuery }),
+    });
+    const data = await response.text();
+    setSqlQuery(data);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>ChatGPT SQL Generator</h1>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="human-query">Enter human-like query:</label>
+        <input
+          id="human-query"
+          type="text"
+          value={humanQuery}
+          onChange={(event) => setHumanQuery(event.target.value)}
+        />
+        <button type="submit">Generate SQL</button>
+      </form>
+      {sqlQuery && (
+        <div>
+          <h2>Generated SQL query:</h2>
+          <pre>{sqlQuery}</pre>
+        </div>
+      )}
     </div>
   );
 }
